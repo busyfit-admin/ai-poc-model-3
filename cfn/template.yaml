@@ -93,11 +93,12 @@ Resources:
       Runtime: 'python3.12'
       MemorySize: 2000
       Layers:
-        - !Ref OpenAiLibLayerVersionArnSSMParameter
+        - !Ref OpenAiLibLayerVersionArnSSMParameter # Ref to lambda_layers repo
       Timeout: 200
       Environment:
         Variables:
           OUTPUT_BUCKET: !Sub 'processed-images-${Environment}'
+          DYNAMODB_TABLE_NAME: !Ref ProductAttributesDynamodb
       Events:
         SQSTrigger:
           Type: SQS

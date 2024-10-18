@@ -13,7 +13,7 @@ aiclient = OpenAI(api_key=api_key)
 dynamodb = boto3.resource('dynamodb')
 
 # Replace this with your actual DynamoDB table name
-TABLE_NAME = 'product-attributes-test1'
+TABLE_NAME = os.environ['DYNAMODB_TABLE_NAME']
 
 
 def lambda_handler(event, context):
